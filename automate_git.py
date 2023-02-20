@@ -33,11 +33,11 @@ def repo_creater(repo):
     
         # if line is empty
         if not line:
-            repo.git.checkout('-b', getpass.getuser())
-            with open(f'{git_response_file}', 'w', encoding='utf-8') as file1:
-                file1.writelines(0,"True")
-                file1.writelines(1,"False")
-                file1.writelines(2,"False")
+            # repo.git.checkout('-b', getpass.getuser())
+            with open(f'{git_response_file}', 'a', encoding='utf-8') as file1:
+                file1.writelines("\nTrue")
+                file1.writelines("\nFalse")
+                file1.writelines("\nFalse")
                 file1.close()
             return True
         elif line[0] == "True":
