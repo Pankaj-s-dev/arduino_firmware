@@ -1,15 +1,20 @@
 import  git 
 import os
 from git import Repo
+import getpass
+getpass.getuser()
 
-
-existing_repo = Repo(os.getcwd())
-origin = existing_repo.remote(name='origin')
-print(existing_repo.git.status())
-if existing_repo.git.diff():
+current_dir = os.getcwd()
+git_response_file = "git_response"
+no_of_git_response = 3
+repo_checker_counter = 0
+repo = Repo(current_dir)
+origin = repo.remote(name='origin')
+print(repo.git.status())
+if repo.git.diff():
     print("Yes")
-    print(existing_repo.git.add('--all'))
-    print(existing_repo.git.commit('-m', 'commit message from python script'))
+    print(repo.git.add('--all'))
+    print(repo.git.commit('-m', 'commit message from python script'))
 else:
     print("Everyting is up to dated")
     
@@ -18,3 +23,34 @@ if origin.push():
 else:
     print("Failed")
 
+def repo_creater(repo):    
+    # Using readline()
+    with open('example.txt', 'r', encoding='utf-8') as file:
+        file.close()
+    
+    if repo_checker_counter < 1:
+        repo_checker_counter += 1
+        with open('example.txt', 'r', encoding='utf-8') as file1:
+        # Get next line from file
+            line = file1.readline()
+    
+        # if line is empty
+        if not line:
+            repo.git.checkout('-b', getpass.getuser())
+            with open('example.txt', 'w', encoding='utf-8') as file1:
+                file1.write("True")
+                file1.write("False")
+                file1.write("False")
+                file1.close()
+            return True
+        elif line[0] == "True":
+            file1.close()
+            return True
+        elif line[0] == "False":
+            repo.git.checkout('-b', getpass.getuser())
+            file1.close()
+            return True
+        else:
+            file1.close()
+            return False
+    
