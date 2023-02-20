@@ -30,7 +30,7 @@ def repo_creater(repo):
         repo_checker_counter += 1
         with open(f'{git_response_file}', 'r', encoding='utf-8') as file1:
         # Get next line from file
-            line = file1.readline()
+            line = file1.readlines()
     
         # if line is empty
         print(line[0])
