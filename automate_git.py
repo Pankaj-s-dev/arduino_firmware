@@ -3,7 +3,7 @@ import os
 
 from git import Repo
 existing_repo = Repo(os.getcwd())
-
+print(existing_repo.git.status())
 if existing_repo.git.diff():
     print("Yes")
     print(existing_repo.git.add('--all'))
