@@ -42,7 +42,7 @@ def repo_creater(repo):
                 file1.writelines("\nFalse")
                 file1.close()
             return True
-        elif line[0] == "True":
+        elif line[0] == True:
             print("Yoo")
             file1.close()
             return True
