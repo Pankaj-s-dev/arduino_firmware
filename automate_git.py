@@ -4,30 +4,26 @@ from git import Repo
 import getpass
 getpass.getuser()
 
+global current_dir
 current_dir = os.getcwd()
+
+global git_response_file
 git_response_file = "git_response"
+
+global no_of_git_response 
 no_of_git_response = 3
+
+
 repo_checker_counter = 0
+
+global repo
 repo = Repo(current_dir)
-origin = repo.remote(name='origin')
-print(repo.git.status())
-if repo.git.diff():
-    print("Yes")
-    print(repo.git.add('--all'))
-    print(repo.git.commit('-m', 'commit message from python script'))
-else:
-    print("Everyting is up to dated")
-    
-if origin.push():
-    print("Pushed")
-else:
-    print("Failed")
 
 def repo_creater(repo):    
     # Using readline()
     with open('example.txt', 'r', encoding='utf-8') as file:
         file.close()
-    
+    global repo_checker_counter
     if repo_checker_counter < 1:
         repo_checker_counter += 1
         with open('example.txt', 'r', encoding='utf-8') as file1:
@@ -53,4 +49,25 @@ def repo_creater(repo):
         else:
             file1.close()
             return False
+        
+        
+
+
+repo_creater(repo)
+
+origin = repo.remote(name='origin')
+
+if repo.git.diff():
+    print("Yes")
+    print(repo.git.add('--all'))
+    print(repo.git.commit('-m', 'commit message from python script'))
+else:
+    print("Everyting is up to dated")
+    
+if origin.push():
+    print("Pushed")
+else:
+    print("Failed")
+
+
     
