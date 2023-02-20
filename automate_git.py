@@ -33,7 +33,7 @@ def repo_creater(repo):
             line = file1.readlines()
     
         # if line is empty
-        print(line[0])
+        print(type(line[0]))
         if not line:
             repo.git.checkout('-b', getpass.getuser())
             with open(f'{git_response_file}', 'a', encoding='utf-8') as file1:
