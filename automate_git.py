@@ -35,9 +35,9 @@ def repo_creater(repo):
         if not line:
             repo.git.checkout('-b', getpass.getuser())
             with open(f'{git_response_file}', 'w', encoding='utf-8') as file1:
-                file1.write("True")
-                file1.write("False")
-                file1.write("False")
+                file1.writelines(0,"True")
+                file1.writelines(1,"False")
+                file1.writelines(2,"False")
                 file1.close()
             return True
         elif line[0] == "True":
