@@ -7,7 +7,7 @@ getpass.getuser()
 global current_dir
 current_dir = os.getcwd()
 
-global git_response_file
+
 git_response_file = "git_response"
 
 global no_of_git_response 
@@ -21,19 +21,20 @@ repo = Repo(current_dir)
 
 def repo_creater(repo):    
     # Using readline()
-    with open('example.txt', 'r', encoding='utf-8') as file:
+    global git_response_file
+    with open(f'{git_response_file}', 'a', encoding='utf-8') as file:
         file.close()
     global repo_checker_counter
     if repo_checker_counter < 1:
         repo_checker_counter += 1
-        with open('example.txt', 'r', encoding='utf-8') as file1:
+        with open(f'{git_response_file}', 'r', encoding='utf-8') as file1:
         # Get next line from file
             line = file1.readline()
     
         # if line is empty
         if not line:
             repo.git.checkout('-b', getpass.getuser())
-            with open('example.txt', 'w', encoding='utf-8') as file1:
+            with open(f'{git_response_file}', 'w', encoding='utf-8') as file1:
                 file1.write("True")
                 file1.write("False")
                 file1.write("False")
