@@ -42,8 +42,8 @@ def repo_creater(repo):
                 file1.close()
             return True
         
-        print(line[0])
-        if line[0] == 'True':
+        c = line[0]
+        if c == 'True':
             print("Yoo")
             file1.close()
             return True
