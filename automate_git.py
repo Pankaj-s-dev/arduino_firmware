@@ -19,7 +19,8 @@ repo_checker_counter = 0
 global repo
 repo = Repo(current_dir)
 
-def repo_creater(repo):    
+def repo_creater(repo):   
+    print("entering") 
     # Using readline()
     global git_response_file
     with open(f'{git_response_file}', 'a', encoding='utf-8') as file:
